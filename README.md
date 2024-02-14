@@ -57,4 +57,5 @@ Following is a quick explanation of the game, modified from the more thorough on
     - Initial behavior will probably be to draw from draw pile and immediately discard, since this is what Palia *seems* to do
 - Able to play with other people
 - Rearrange hand on discard
+- Game rearranges nicely when window is resized
 
