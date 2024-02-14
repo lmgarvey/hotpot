@@ -56,4 +56,5 @@ Following is a quick explanation of the game, modified from the more thorough on
 - Intentional behavior for computer opponents
     - Initial behavior will probably be to draw from draw pile and immediately discard, since this is what Palia *seems* to do
 - Able to play with other people
+- Rearrange hand on discard
 
