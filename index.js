@@ -52,6 +52,8 @@ class Deck {
     reset() {
         this.deck = [];
 
+        playerHandId = 0;
+
         const suits = ['meat', 'mushrooms', 'carbs', 'greens', 'spices', 'veggies', 'noodles', 'fish'];
         const values = ['rib', 'rolled beef', 'steak', 'brightshroom', 'enoki', 'mountain morel', 'dumplings', 'tofu', 'water chestnut', 'bok choy', 'napa cabbage', 'spring onion', 'dari clove', 'garlic', 'heat root', 'carrot', 'corn', 'potato', 'handpulled', 'ramen', 'udon', 'fish', 'lobster', 'shrimp'];
     
@@ -103,6 +105,7 @@ class Deck {
     }
 }
 
+// card logic: https://www.youtube.com/watch?v=Bj6lC93JMi0
 function createCards() {
     // each 'cardItem' is a pair of {id: 'some_id', imagePath: 'some_path'}
     cardImgDefs.forEach((cardItem)=>{
@@ -183,37 +186,46 @@ function addCardToGridCell(card) {
 }
 
 function mapCardIdToGridCell(handId) {
-    if (handId == 0)
-    {
-        return '.card-pos-a';
-    }
-    else if (handId == 1)
-    {
-        return '.card-pos-b';
-    }
-    else if (handId == 2)
-    {
-        return '.card-pos-c';
-    }
-    else if (handId == 3)    {
-        return '.card-pos-d';
-    }
-    else if (handId == 4)    {
-        return '.card-pos-e';
-    }
-    else if (handId == 5)    {
-        return '.card-pos-f';
-    }
-    else if (handId == 6)    {
-        return '.card-pos-g';
-    }
-    else if (handId == 7)    {
-        return '.card-pos-h';
-    }
-    else
-    {
-        return '.card-pos-draw';
-    }
+    if (handId == 0) { return '.card-pos-a'; }
+    else if (handId == 1) { return '.card-pos-b'; }
+    else if (handId == 2) { return '.card-pos-c'; }
+    else if (handId == 3) { return '.card-pos-d'; }
+    else if (handId == 4) { return '.card-pos-e'; }
+    else if (handId == 5) { return '.card-pos-f'; }
+    else if (handId == 6) { return '.card-pos-g'; }
+    else if (handId == 7) { return '.card-pos-h'; }
+    else if (handId == 8) { return '.card-pos-draw'; }
+
+    else if (handId == 9) { return '.player-two-discard'; }
+    else if (handId == 10) { return '.player-three-discard'; }
+    else if (handId == 11) { return '.player-four-discard'; }
+
+    else if (handId == 12) { return '.p-two-pos-a'; }
+    else if (handId == 13) { return '.p-two-pos-b'; }
+    else if (handId == 14) { return '.p-two-pos-c'; }
+    else if (handId == 15) { return '.p-two-pos-d'; }
+    else if (handId == 16) { return '.p-two-pos-e'; }
+    else if (handId == 17) { return '.p-two-pos-f'; }
+    else if (handId == 18) { return '.p-two-pos-g'; }
+    else if (handId == 19) { return '.p-two-pos-h'; }
+
+    else if (handId == 20) { return '.p-three-pos-a'; }
+    else if (handId == 21) { return '.p-three-pos-b'; }
+    else if (handId == 22) { return '.p-three-pos-c'; }
+    else if (handId == 23) { return '.p-three-pos-d'; }
+    else if (handId == 24) { return '.p-three-pos-e'; }
+    else if (handId == 25) { return '.p-three-pos-f'; }
+    else if (handId == 26) { return '.p-three-pos-g'; }
+    else if (handId == 27) { return '.p-three-pos-h'; }
+
+    else if (handId == 28) { return '.p-four-pos-a'; }
+    else if (handId == 29) { return '.p-four-pos-b'; }
+    else if (handId == 30) { return '.p-four-pos-c'; }
+    else if (handId == 31) { return '.p-four-pos-d'; }
+    else if (handId == 32) { return '.p-four-pos-e'; }
+    else if (handId == 33) { return '.p-four-pos-f'; }
+    else if (handId == 34) { return '.p-four-pos-g'; }
+    else if (handId == 35) { return '.p-four-pos-h'; }
 
 }
 
@@ -231,7 +243,7 @@ for (let i = 0; i < 8; i++)
     hand.push(card);
 }
 
-console.log('Now let\'s try getting some cards on screen...');
+console.log('Now let\'s get your hand on the screen...');
 for (let i = 0; i < hand.length; i++)
 {
     let cardId = hand[i];
@@ -239,8 +251,24 @@ for (let i = 0; i < hand.length; i++)
     createCard(cardItem);
 }
 
+console.log('And the drawn card for you...');
 let drawnCard = deck1.deal();
 let cardItem = cardImgDefs.find(searchId => searchId.id == drawnCard);
 createCard(cardItem);
 
-// createCards();
+console.log('And your opponents\' discards...');
+for (let i = 0; i < 3; i++)
+{
+    drawnCard = deck1.deal();
+    cardItem = cardImgDefs.find(searchId => searchId.id == drawnCard);
+    createCard(cardItem);
+}
+
+console.log('Setting up player two\'s hand...');
+for (let i = 0; i < 24; i++)
+{
+    drawnCard = deck1.deal();
+    cardItem = cardImgDefs.find(searchId => searchId.id == drawnCard);
+    createCard(cardItem);
+}
+

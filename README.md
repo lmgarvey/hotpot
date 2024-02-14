@@ -33,11 +33,10 @@ Following is a quick explanation of the game, modified from the more thorough on
 
 #### done
 - [completed tasks]
-- This is where I'd put completed tasks... if I had any!
+- Getting the player's hand to appear onscreen
 
 #### red light
 - [critical tasks]
-- Getting the player's hand to appear onscreen
 - Getting the opponent's discards to appear onscreen
 - Able to draw from the draw pile
 - Able to draw from discard piles
@@ -46,6 +45,7 @@ Following is a quick explanation of the game, modified from the more thorough on
 
 #### yellow light
 - [ideal if possible... tasks]
+- Opponent's discards should start face-down
 - Discards screen pop-up
 - Detect when opponents have winning sets
 - Detect when the game should end from too many discards
@@ -59,3 +59,6 @@ Following is a quick explanation of the game, modified from the more thorough on
 - Rearrange hand on discard
 - Game rearranges nicely when window is resized
 
+
+
+TK working width of the window (ignoring scaling issues) is 727.2 x 405.283

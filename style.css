@@ -15,23 +15,28 @@ main {
     justify-content: center;
 }
 
-.card-container {
+/*
+TK PLAYER's hand
+*/
+.player-hand-container {
     position: absolute;
-    bottom: 5%;
+    bottom: 3%;
     height: 40%;
     width: 90%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas: "a b c d e f g h";
-    border: 1px solid black;
+    border: 2px solid black;
 }
 
-.draw-card {
+.drawn-card {
     position: absolute;
     bottom: 29%;
 }
 
-.card-pos-a {
+/*
+not sure what these are for, but hesitant to delete them entirely yet
+/* .card-pos-a {
     grid-area: a;
 }
 .card-pos-b {
@@ -54,7 +59,7 @@ main {
 }
 .card-pos-h {
     grid-area: h;
-}
+} */
 
 .card-pos-a, .card-pos-b, .card-pos-c, .card-pos-d, .card-pos-e, .card-pos-f, .card-pos-g, .card-pos-h, .card-pos-draw {
     display: flex;
@@ -70,6 +75,73 @@ main {
     cursor: pointer;
 }
 
+/*
+TK OPPONENTS' hands
+*/
+.player-two-discard {
+    position: absolute;
+    top: 45%;
+    right: 20%;
+    transform: rotate(270deg);
+}
+.player-three-discard {
+    position: absolute;
+    top: 20%;
+    transform: rotateX(180deg);
+}
+.player-four-discard {
+    position: absolute;
+    top: 45%;
+    left: 20%;
+    transform: rotate(90deg);
+}
+
+.player-two-discard, .player-three-discard, .player-four-discard {
+    display: flex;
+    justify-content: center;
+}
+
+.player-two-hand, .player-three-hand, .player-four-hand {
+    position: absolute;
+    display: grid;
+    height: 10%;
+    width: 60%;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: "a b c d e f g h";
+}
+
+.player-two-hand {
+    top: 40%;
+    left: 62%;
+    transform: rotate(270deg);
+}
+
+.player-three-hand {
+    top: 2%;
+    transform: rotateX(180deg);
+}
+
+.player-four-hand {
+    top: 40%;
+    right: 62%;
+    transform: rotate(90deg);
+}
+
+.p-two-pos-a, .p-two-pos-b, .p-two-pos-c, .p-two-pos-d, .p-two-pos-e, .p-two-pos-f, .p-two-pos-g, .p-two-pos-h,
+.p-three-pos-a, .p-three-pos-b, .p-three-pos-c, .p-three-pos-d, .p-three-pos-e, .p-three-pos-f, .p-three-pos-g, .p-three-pos-h,
+.p-four-pos-a, .p-four-pos-b, .p-four-pos-c, .p-four-pos-d, .p-four-pos-e, .p-four-pos-f, .p-four-pos-g, .p-four-pos-h {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(65px) scale(0.7);
+}
+
+
+
+
+/*
+TK GENERAL CARD RULES
+*/
 .card-inner {
     position: relative;
     width: 100%;
