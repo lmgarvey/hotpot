@@ -106,13 +106,6 @@ class Deck {
 }
 
 // card logic: https://www.youtube.com/watch?v=Bj6lC93JMi0
-function createCards() {
-    // each 'cardItem' is a pair of {id: 'some_id', imagePath: 'some_path'}
-    cardImgDefs.forEach((cardItem)=>{
-        createCard(cardItem)
-    });
-}
-
 /**
  * Creates the card as given, with front and back elements and images
  * @param cardItem The card to create
@@ -137,8 +130,18 @@ function createCard(cardItem) {
     addClassToElement(cardFrontElem, 'card-front');
     addClassToElement(cardBackElem, 'card-back');
 
+    if (playerHandId > 11)
+    {
+        // card should be flipped if it's not yours and isn't a discard
+        addSrcToImageElement(cardFrontImg, cardBackImgPath);
+    }
+    else
+    {
+        addSrcToImageElement(cardFrontImg, cardItem.imagePath); 
+    }
+
     addSrcToImageElement(cardBackImg, cardBackImgPath);
-    addSrcToImageElement(cardFrontImg, cardItem.imagePath);
+
 
     addClassToElement(cardBackImg, 'card-img');
     addClassToElement(cardFrontImg, 'card-img');
@@ -155,6 +158,9 @@ function createCard(cardItem) {
     addChildElement(cardElem, cardInnerElem);
 
     addCardToGridCell(cardElem);
+
+    // if we're past the first 8 cards (your hand), we shouldn't be able to see it
+
 
 }
 
@@ -264,7 +270,7 @@ for (let i = 0; i < 3; i++)
     createCard(cardItem);
 }
 
-console.log('Setting up player two\'s hand...');
+console.log('Setting up opponents\' hands...');
 for (let i = 0; i < 24; i++)
 {
     drawnCard = deck1.deal();
@@ -272,3 +278,10 @@ for (let i = 0; i < 24; i++)
     createCard(cardItem);
 }
 
+console.log('And here are the remaining cards in the deck:');
+let end = deck1.deck.length;
+for (let i = 0; i < end; i++)
+{
+    let card = deck1.deal();
+    console.log(card);
+}
